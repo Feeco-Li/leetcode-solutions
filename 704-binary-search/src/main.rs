@@ -34,12 +34,11 @@ struct Solution;
 
 impl Solution {
     pub fn search(nums: Vec<i32>, target: i32) -> i32 {
-        for (i, &item) in nums.iter().enumerate() {
-            if item == target {
-                return i as i32;
-            }
+        // binary_search returns Ok(index) if found, Err(index_where_it_would_fit) if not
+        match nums.binary_search(&target) {
+            Ok(index) => index as i32,
+            Err(_) => -1,
         }
-        -1
     }
 }
 
