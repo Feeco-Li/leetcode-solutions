@@ -44,10 +44,11 @@ class Solution:
     def containsDuplicate(self, nums: List[int]) -> bool:
         d = dict()
         for i in nums:
+            # "not in" only check key existence of dictionary and ignore values
             if i not in d :
                 d[i]=0
             else:
                 d[i]+=1
         
         count = Counter(d)
-        return any(v>0 for v in d.values())
+        return any(v>0 for v in count.values())
