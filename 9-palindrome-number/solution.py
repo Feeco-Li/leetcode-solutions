@@ -37,13 +37,4 @@
 
 class Solution:
     def isPalindrome(self, x: int) -> bool:
-        new_x = str(x)[::-1]
-        new_y = str(x)
-        result = True
-        for i,item in enumerate(new_x):
-            if item==new_y[i]:
-                continue
-            else:
-                result = False
-                break
-        return result
+        return str(x) == str(x)[::-1]
