@@ -36,8 +36,13 @@ class Solution:
         Do not return anything, modify s in-place instead.
         """
         first, last = 0, len(s) - 1
+        firstChar = ""
+        lastChar = ""
 
         while first < last:
-            s[first], s[last] = s[last], s[first]
+            firstChar = s[first]
+            lastChar = s[last]
+            s[first] = lastChar
+            s[last] = firstChar
             first += 1
             last -= 1
