@@ -37,7 +37,7 @@ class Solution:
     def middleNode(self, head: Optional[ListNode]) -> Optional[ListNode]:
         single = head
         double = head
-        while double is not None and double.next is not None:
+        while double and double.next:
             single = single.next
             double = double.next.next
         return single
