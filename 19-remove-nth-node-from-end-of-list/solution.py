@@ -40,17 +40,20 @@
 #         self.val = val
 #         self.next = next
 class Solution:
-    def removeNthFromEnd(self, head: Optional[ListNode], n: int) -> Optional[ListNode]:
-        dummy = ListNode(-1)
-        dummy.next = head
-        p1 = dummy
-        p2 = dummy
-        for i in range(n + 1):
-            if p1 is None:
-                return None
+    def findFromEnd(self, head: Optional[ListNode], n: int) -> Optional[ListNode]:
+        # find the nth node from end
+        p1 = head
+        for i in range(n):
             p1 = p1.next
+        p2 = head
         while p1 is not None:
             p1 = p1.next
             p2 = p2.next
-        p2.next = p2.next.next
+        return p2
+
+    def removeNthFromEnd(self, head: Optional[ListNode], n: int) -> Optional[ListNode]:
+        dummy = ListNode(-1)
+        dummy.next = head
+        p = self.findFromEnd(dummy, n + 1)
+        p.next = p.next.next
         return dummy.next
