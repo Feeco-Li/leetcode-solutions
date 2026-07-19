@@ -57,7 +57,7 @@ class Solution:
     def hasCycle(self, head: Optional[ListNode]) -> bool:
         single = head
         double = head
-        while double is not None and double.next is not None:
+        while double and double.next:
             single = single.next
             double = double.next.next
             if single == double:
