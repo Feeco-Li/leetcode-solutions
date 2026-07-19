@@ -70,6 +70,5 @@ class Solution:
 
             if node.next is not None:
                 heapq.heappush(pq, (node.next.val, i, node.next))
-            node = node.next
 
         return dummy.next
