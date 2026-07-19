@@ -54,23 +54,22 @@ class Solution:
     def mergeKLists(self, lists: List[Optional[ListNode]]) -> Optional[ListNode]:
         if not lists:
             return None
-        # add virtual head
         dummy = ListNode(-1)
-        p = dummy
-
+        d = dummy
         pq = []
-        # add heads to heapq
-        for i, head in enumerate(lists):
-            if head:
-                print(head.val)
-                heapq.heappush(pq, (head.val, i, head))
-        # add to sorted list
+
+        for i, node in enumerate(lists):
+            if node is not None:
+                heapq.heappush(pq, (node.val, i, node))
+
         while pq:
             val, i, node = heapq.heappop(pq)
-            p.next = node
+            d.next = node
+            d = d.next
             print(val)
+
             if node.next is not None:
                 heapq.heappush(pq, (node.next.val, i, node.next))
-            p = p.next
+            node = node.next
 
         return dummy.next
