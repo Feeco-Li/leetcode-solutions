@@ -56,12 +56,12 @@
 
 class Solution:
     def removeDuplicates(self, nums: List[int]) -> int:
-        print(nums)
         if not nums:
             return 0
-        curr = 0
-        for i, num in enumerate(nums):
-            if nums[curr] != num:
-                curr += 1
-                nums[curr] = num
-        return curr+1
+
+        slow = 0
+        for num in nums:
+            if nums[slow] != num:
+                slow += 1
+                nums[slow] = num
+        return slow + 1
