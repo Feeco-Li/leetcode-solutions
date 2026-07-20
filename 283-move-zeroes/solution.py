@@ -49,3 +49,6 @@ class Solution:
         # because "i" is value not index
         for i in range(curr, len(nums)):
             nums[i] = 0
+
+        # improvement
+        # nums[curr], nums[i] = nums[i], nums[curr]
