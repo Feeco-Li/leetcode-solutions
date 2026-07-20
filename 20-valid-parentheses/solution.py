@@ -51,9 +51,9 @@
 
 class Solution:
     def isValid(self, s: str) -> bool:
-        pairs = {
-            ")": "(",
+        table = {
             "]": "[",
+            ")": "(",
             "}": "{",
         }
         stack = []
@@ -61,8 +61,8 @@ class Solution:
             if ch in "([{":
                 stack.append(ch)
             else:
-                if stack and stack[-1] == pairs[ch]:
+                if stack and table[ch] == stack[-1]:
                     stack.pop()
                 else:
-                    stack.append(ch)
+                    return False
         return len(stack) == 0
