@@ -26,7 +26,6 @@
 
 class Solution:
     def palindrome(self, s: str, l: int, r: int) -> str:
-        # find the palindrome
         while l >= 0 and r < len(s) and s[l] == s[r]:
             l -= 1
             r += 1
@@ -39,6 +38,6 @@ class Solution:
             s2 = self.palindrome(s, i, i + 1)
             if len(s1) > len(res):
                 res = s1
-            if len(s2) > len(res):
+            elif len(s2) > len(res):
                 res = s2
         return res
