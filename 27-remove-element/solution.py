@@ -56,13 +56,9 @@
 
 class Solution:
     def removeElement(self, nums: List[int], val: int) -> int:
-        if not nums:
-            return 0
-
         curr = 0
-        for i, num in enumerate(nums):
-            if num != val:
-                nums[curr] = num
+        for i in range(len(nums)):
+            if nums[i] != val:
+                nums[curr] = nums[i]
                 curr += 1
-
         return curr
