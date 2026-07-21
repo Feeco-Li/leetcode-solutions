@@ -44,19 +44,19 @@
 
 class Solution:
     def decodeString(self, s: str) -> str:
-        stack = []
+        stack = []  # to store tuple (times,word)
         curr = ""
         k = 0
-        for c in s:
-            if c.isdigit():
-                k = k * 10 + int(c)
-            elif c == "[":
-                stack.append((curr, k))
-                curr = ""
+        for ch in s:
+            if ch.isdigit():
+                k = k * 10 + int(ch)
+            elif ch == "[":
+                stack.append((k, curr))
                 k = 0
-            elif c == "]":
-                result, times = stack.pop()
-                curr = result + curr * times
+                curr = ""
+            elif ch == "]":
+                times, prev = stack.pop()
+                curr = prev + (curr * times)
             else:
-                curr += c
+                curr += ch
         return curr
