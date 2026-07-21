@@ -58,13 +58,12 @@ class Solution:
         single = head
         double = head
         while double and double.next:
-            single=single.next
-            double=double.next.next
-            if single==double:
-                single=head
-                while single!=double:
-                    single=single.next
-                    double=double.next
+            single = single.next
+            double = double.next.next
+            if single == double:
+                single = head
+                while single != double:
+                    single = single.next
+                    double = double.next
                 return single
         return None
-
