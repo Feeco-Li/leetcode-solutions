@@ -38,6 +38,6 @@ class Solution:
             s2 = self.palindrome(s, i, i + 1)
             if len(s1) > len(res):
                 res = s1
-            elif len(s2) > len(res):
+            if len(s2) > len(res):
                 res = s2
         return res
