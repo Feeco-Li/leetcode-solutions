@@ -54,21 +54,19 @@ class Solution:
     def mergeKLists(self, lists: List[Optional[ListNode]]) -> Optional[ListNode]:
         if not lists:
             return None
-        dummy = ListNode(-1)
-        d = dummy
-        pq = []
 
+        dummy = ListNode(-1)
+        p = dummy
+        pq = []
         for i, node in enumerate(lists):
-            if node is not None:
+            if node:
                 heapq.heappush(pq, (node.val, i, node))
 
         while pq:
             val, i, node = heapq.heappop(pq)
-            d.next = node
-            d = d.next
-            print(val)
-
-            if node.next is not None:
+            p.next = node
+            p = p.next
+            if node.next:
                 heapq.heappush(pq, (node.next.val, i, node.next))
 
         return dummy.next
