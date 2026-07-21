@@ -59,9 +59,9 @@ class Solution:
         if not nums:
             return 0
 
-        slow = 0
-        for num in nums:
-            if nums[slow] != num:
-                slow += 1
-                nums[slow] = num
-        return slow + 1
+        curr = 0
+        for i in range(1, len(nums)):
+            if nums[curr] != nums[i]:
+                curr += 1
+                nums[curr] = nums[i]
+        return curr + 1
