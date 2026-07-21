@@ -58,14 +58,17 @@ class Solution:
     def lengthLongestPath(self, input: str) -> int:
         parts = input.split("\n")
         stack = []
-        max_len = 0
+        max_length = 0
+        print(parts)
         for part in parts:
-            level = part.rfind("\t") + 1
-            while level < len(stack):
+            name = part.lstrip("\t")
+            level = len(part) - len(name)
+            while len(stack) > level:
                 stack.pop()
-            stack.append(len(part) - level)
-
             if "." in part:
-                total_length = sum(stack) + len(stack) - 1
-                max_len = max(max_len, total_length)
-        return max_len
+                # len(stack) equal to number of number of "/"
+                total_length = sum(stack) + len(name) + len(stack)
+                max_length = max(max_length, total_length)
+            else:
+                stack.append(len(name))
+        return max_length
