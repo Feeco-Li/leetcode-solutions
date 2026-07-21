@@ -61,12 +61,11 @@ class Solution:
         for part in parts:
             if part == "" or part == ".":
                 continue
-            if part == "..":
+            elif part == "..":
                 if stack:
                     stack.pop()
-                continue
-            stack.append(part)
-        result = ""
-        while stack:
-            result = "/" + stack.pop() + result
-        return result if result else "/"
+            else:
+                stack.append(part)
+            print(stack)
+
+        return "/" + "/".join(map(str, stack))
