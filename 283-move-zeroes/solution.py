@@ -40,15 +40,7 @@ class Solution:
             return None
 
         curr = 0
-        for i, num in enumerate(nums):
-            if num != 0:
-                nums[curr] = nums[i]
+        for i in range(len(nums)):
+            if nums[i] != 0:
+                nums[curr], nums[i] = nums[i], nums[curr]
                 curr += 1
-
-        # for i in nums[curr:len(nums)-1] is wrong
-        # because "i" is value not index
-        for i in range(curr, len(nums)):
-            nums[i] = 0
-
-        # improvement
-        # nums[curr], nums[i] = nums[i], nums[curr]
