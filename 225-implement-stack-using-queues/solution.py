@@ -38,6 +38,8 @@
 # myStack.pop(); // return 2
 # myStack.empty(); // return False
 #
+# stack pop last
+# queue pop left and push to last
 # [1,2,3,4]
 #
 # **Constraints:**
@@ -62,11 +64,12 @@ class MyStack:
 
     def pop(self) -> int:
         size = len(self.queue)
-        while size > 2:
-            self.queue.append(self.queue.popleft())
-            size -= 1
-        self.top_element = self.queue[0]
-        self.queue.append(self.queue.popleft())
+        for i in range(size - 2):
+            curr = self.queue.popleft()
+            self.queue.append(curr)
+        curr = self.queue.popleft()
+        self.top_element = curr
+        self.queue.append(curr)
         return self.queue.popleft()
 
     def top(self) -> int:
