@@ -35,8 +35,8 @@ class Solution:
         """
         Do not return anything, modify s in-place instead.
         """
-        first, last = 0, len(s) - 1
-        while first < last:
-            s[first],s[last] = s[last],s[first]
-            first += 1
-            last -= 1
+        left, right = 0, len(s) - 1
+        while left < right:
+            s[left], s[right] = s[right], s[left]
+            left += 1
+            right -= 1
