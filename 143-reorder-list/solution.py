@@ -41,20 +41,16 @@ class Solution:
         """
         Do not return anything, modify head in-place instead.
         """
-        p = head
         stack = []
+        p = head
         while p:
             stack.append(p)
             p = p.next
-
         p = head
-        while p:
+        while stack[-1].next != p.next and stack[-1] != p:
             last_node = stack.pop()
             next_node = p.next
-            if next_node == last_node or last_node.next == next_node:
-                last_node.next = None
-                break
-
             p.next = last_node
             last_node.next = next_node
             p = next_node
+        p.next = None
