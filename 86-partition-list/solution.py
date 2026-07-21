@@ -35,18 +35,18 @@
 class Solution:
     def partition(self, head: Optional[ListNode], x: int) -> Optional[ListNode]:
         small = ListNode(-1)
-        sP = small
         large = ListNode(-1)
-        lP = large
+        s = small
+        l = large
         p = head
         while p:
             if p.val < x:
-                sP.next = p
-                sP = sP.next
+                s.next = p
+                s = s.next
             else:
-                lP.next = p
-                lP = lP.next
+                l.next = p
+                l = l.next
             p = p.next
-        sP.next = large.next
-        lP.next = None
+        s.next = large.next
+        l.next = None
         return small.next
