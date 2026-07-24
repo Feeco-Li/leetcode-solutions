@@ -60,7 +60,7 @@ class Solution:
             return 0
 
         curr = 0
-        for i in range(1, len(nums)):
+        for i in range(len(nums)):
             if nums[curr] != nums[i]:
                 curr += 1
                 nums[curr] = nums[i]
