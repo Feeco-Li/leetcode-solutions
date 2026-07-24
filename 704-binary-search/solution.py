@@ -40,8 +40,8 @@ class Solution:
             if nums[mid] == target:
                 return mid
             elif nums[mid] > target:
-                right = mid - 1
+                right = mid - 1  # since we know mid is not what we want
             elif nums[mid] < target:
-                left = mid + 1
+                left = mid + 1  # since we know mid is not what we want
             print(mid)
         return -1
