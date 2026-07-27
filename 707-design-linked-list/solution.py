@@ -86,11 +86,9 @@ class MyLinkedList:
 
     def addAtHead(self, val: int) -> None:
         self.addAtIndex(0, val)
-        self.size += 1
 
     def addAtTail(self, val: int) -> None:
-        self.addAtIndex(self.size - 1, val)
-        self.size += 1
+        self.addAtIndex(self.size, val)
 
     def addAtIndex(self, index: int, val: int) -> None:
         if index < 0 or index > self.size:
