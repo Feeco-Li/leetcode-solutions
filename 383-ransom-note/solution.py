@@ -37,11 +37,7 @@ class Solution:
     def canConstruct(self, ransomNote: str, magazine: str) -> bool:
         cR = Counter(ransomNote)
         cM = Counter(magazine)
-        print(cR)
-        print(cM)
         for key in cR.keys():
-            # print(cR[key])
-            # print(cM[key])
             if cR[key] > cM[key]:
                 return False
         return True
