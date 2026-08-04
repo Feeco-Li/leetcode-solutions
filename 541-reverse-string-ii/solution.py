@@ -32,16 +32,8 @@
 class Solution:
     def reverseStr(self, s: str, k: int) -> str:
         sList = list(s)
-        n = len(sList)
 
-        def reverseArr(left: int, right: int):
-            while left <= right:
-                sList[left], sList[right] = sList[right], sList[left]
-                left += 1
-                right -= 1
-
-        for i in range(0, n, 2 * k):
-            right = min(i + k - 1, n - 1)
-            reverseArr(i, right)
+        for i in range(0, len(s), 2 * k):
+            sList[i : i + k] = sList[i : i + k][::-1]
 
         return "".join(sList)
