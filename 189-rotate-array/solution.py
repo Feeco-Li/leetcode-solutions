@@ -37,6 +37,7 @@
 # * Try to come up with as many solutions as you can. There are at least **three**
 #   different ways to solve this problem.
 # * Could you do it in-place with `O(1)` extra space?
+from typing import List
 
 
 class Solution:
@@ -46,8 +47,13 @@ class Solution:
         """
         n = len(nums)
         k = k % n
-        if k == 0:
-            return
-        nums[:] = nums[::-1]
-        nums[:k] = nums[k - 1 : None : -1]
-        nums[k:] = nums[n - 1 : k - 1 : -1]
+
+        def reverse(start: int, stop: int) -> None:
+            while start < stop:
+                nums[start], nums[stop] = nums[stop], nums[start]
+                start += 1
+                stop -= 1
+
+        reverse(0, n - 1)
+        reverse(0, k - 1)
+        reverse(k, n - 1)
