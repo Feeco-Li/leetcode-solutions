@@ -40,19 +40,26 @@
 //
 // **Follow-up: **Can you come up with an algorithm that is less than `O(n²)` time
 // complexity?
-
+use std::{collections::HashMap, usize};
 struct Solution;
 
 impl Solution {
     pub fn two_sum(nums: Vec<i32>, target: i32) -> Vec<i32> {
-        for (i, x) in nums.iter().enumerate() {
-            for (j, y) in nums.iter().enumerate() {
-                if i != j && x + y == target {
-                    return vec![i as i32, j as i32];
-                }
+        // Create hashmap to store { number: index }
+        let mut map: HashMap<i32, usize> = HashMap::new();
+
+        for (i, &v) in nums.iter().enumerate() {
+            let complement = target - v;
+
+            // If the complement exists in our map, we found our pair!
+            if let Some(&prev_index) = map.get(&complement) {
+                return vec![prev_index as i32, i as i32];
             }
+
+            // Otherwise, store the current number and its index
+            map.insert(v, i);
         }
-        //hello world
+
         unreachable!("problem guarantees exactly one solution")
     }
 }
