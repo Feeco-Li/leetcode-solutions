@@ -45,10 +45,7 @@ impl Solution {
     pub fn contains_duplicate(nums: Vec<i32>) -> bool {
         let mut count: std::collections::HashMap<i32, i32> = std::collections::HashMap::new();
         for num in nums {
-            match count.get(&num) {
-                Some(c) => count.insert(num, c + 1),
-                None => count.insert(num, 1),
-            };
+            *count.entry(num).or_insert(0) += 1;
         }
 
         count.into_values().any(|c| c > 1)
